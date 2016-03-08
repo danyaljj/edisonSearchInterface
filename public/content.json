@@ -1,0 +1,19 @@
+{
+  "array": [
+    [
+      "BrownClusterViewGenerator",
+      "Use this class to create a brown cluster view for your text.",
+      "http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/annotators/BrownClusterViewGenerator.html"
+    ],
+    [
+      "ContextFeatureExtractor",
+      "A ContextFeatureExtractor generates features from the words in the context of the specified constituent.",
+      "http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/ContextFeatureExtractor.html"
+    ],
+    [
+      "CurrencyIndicator",
+      "Checks for the following patterns in the input constituent: Constituent ends with a currency symbol followed by a number Constituent ends with a number (in words) followed by a currency symbol",
+      "http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/CurrencyIndicator.html"
+    ]
+  ]
+}

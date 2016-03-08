@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	div.container
+		.container
+			.row
+				.col-md-6
+					h2 Edison Search Interface
+					#custom-search-input
+						.input-group.col-md-12
+							input#search.form-control.input-lg(type='text', placeholder='Keyword or Description')
+							span.input-group-btn
+								button.btn.btn-info.btn-lg(type='button')
+									i.glyphicon.glyphicon-search
+
+				.row
+					.col-lg-12
+						table#table.table
+							thead
+								tr
+									th Class Name
+									th Description
+							tbody
+								tr
+									td
+										a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/annotators/BrownClusterViewGenerator.html') BrownClusterViewGenerator
+									td Use this class to create a brown cluster view for your text.
+								tr
+									td
+										a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/ContextFeatureExtractor.html') ContextFeatureExtractor
+									td A ContextFeatureExtractor generates features from the words in the context of the specified constituent.
+								tr
+									td
+										a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/CurrencyIndicator.html') CurrencyIndicator
+									td Checks for the following patterns in the input constituent: Constituent ends with a currency symbol followed by a number Constituent ends with a number (in words) followed by a currency symbol.
