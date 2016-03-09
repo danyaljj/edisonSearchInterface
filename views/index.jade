@@ -54,9 +54,8 @@ block content
 									code(class="language-clike")
 										| // define a context feature extractor for a context of size two
 										| FeatureExtractor fex = new POSAndWordBigramThreeBefore();
-										| TextAnnotation ta =
-										| 	TextAnnotationUtilities
-										|		.createFromTokenizedString("This is an extractor .");
+										| TextAnnotation ta = TextAnnotationUtilities
+										|		       .createFromTokenizedString("This is an extractor .");
 										| // extract features for constituent at index 2
 										| Constituent c = ta.getView(ViewNames.TOKENS)
 										|		.getConstituentsCoveringToken(3);
