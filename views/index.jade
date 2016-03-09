@@ -12,24 +12,58 @@ block content
 							span.input-group-btn
 								button.btn.btn-info.btn-lg(type='button')
 									i.glyphicon.glyphicon-search
+					.row
+						.col-lg-12
+							table#table.table
+								thead
+									tr
+										th Class Name
+										th Description
+										th Example
+								tbody
+									tr
+										td
+											a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/annotators/BrownClusterViewGenerator.html') BrownClusterViewGenerator
+										td Use this class to create a brown cluster view for your text.
+										td
+											button(type="button" class="btn btn-success") Example
+									tr
+										td
+											a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/ContextFeatureExtractor.html') ContextFeatureExtractor
+										td A ContextFeatureExtractor generates features from the words in the context of the specified constituent.
+										td
+											button(type="button" class="btn btn-success") Example
+									tr
+										td
+											a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/CurrencyIndicator.html') CurrencyIndicator
+										td 	Checks for the following patterns in the input constituent: Constituent ends with a currency symbol followed by a number Constituent ends with a number (in words) followed by a currency symbol.
+										td
+											button(type="button" class="btn btn-success") Example
+									tr
+										td
+											a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/CurrencyIndicator.html') POSAndWordBigramThreeBefore
+										td    Extract part-of-speech and word bigrams from 3 words before the target constituent.
+										td
+											button(type="button" class="btn btn-success") Example
 
 				.row
-					.col-lg-12
-						table#table.table
-							thead
-								tr
-									th Class Name
-									th Description
-							tbody
-								tr
-									td
-										a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/annotators/BrownClusterViewGenerator.html') BrownClusterViewGenerator
-									td Use this class to create a brown cluster view for your text.
-								tr
-									td
-										a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/ContextFeatureExtractor.html') ContextFeatureExtractor
-									td A ContextFeatureExtractor generates features from the words in the context of the specified constituent.
-								tr
-									td
-										a(href='http://cogcomp.cs.illinois.edu/software/doc/illinois-cogcomp-nlp/apidocs/edu/illinois/cs/cogcomp/edison/features/CurrencyIndicator.html') CurrencyIndicator
-									td Checks for the following patterns in the input constituent: Constituent ends with a currency symbol followed by a number Constituent ends with a number (in words) followed by a currency symbol.
+					.col-xs-6
+						.div(style="margin-top:40px")
+							.div(class="panel-body-code")
+								pre(style="margin:20px")
+									code(class="language-clike")
+										| // define a context feature extractor for a context of size two
+										| FeatureExtractor fex = new POSAndWordBigramThreeBefore();
+										| TextAnnotation ta =
+										| 	TextAnnotationUtilities
+										|		.createFromTokenizedString("This is an extractor .");
+										| // extract features for constituent at index 2
+										| Constituent c = ta.getView(ViewNames.TOKENS)
+										|		.getConstituentsCoveringToken(3);
+										| Set<Feature> features = fex.getFeatures(c);
+										| String target = "[context-2:#word#:this#is, "
+										|		+ "context-2:#pos#:DT#VBZ, context-1:#word#:is#an, "
+										| 		+ "context-1:#pos#:VBZ#DT, context*:#word#:an#extractor, "
+										| 		+ "context*:#pos#:DT#NN]";
+										| assertEquals(features.toString(), target);
+

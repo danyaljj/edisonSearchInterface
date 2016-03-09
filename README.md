@@ -12,4 +12,3 @@ Steps to run:
  - bootstrap 
  - [jquery-searchable](https://github.com/stidges/jquery-searchable)
  
- 
