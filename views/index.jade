@@ -55,14 +55,12 @@ block content
 										| // define a context feature extractor for a context of size two
 										| FeatureExtractor fex = new POSAndWordBigramThreeBefore();
 										| TextAnnotation ta = TextAnnotationUtilities
-										|		       .createFromTokenizedString("This is an extractor .");
+										|		  .createFromTokenizedString("This is an extractor .");
 										| // extract features for constituent at index 2
 										| Constituent c = ta.getView(ViewNames.TOKENS)
 										|		.getConstituentsCoveringToken(3);
 										| Set<Feature> features = fex.getFeatures(c);
-										| String target = "[context-2:#word#:this#is, "
-										|		+ "context-2:#pos#:DT#VBZ, context-1:#word#:is#an, "
-										| 		+ "context-1:#pos#:VBZ#DT, context*:#word#:an#extractor, "
-										| 		+ "context*:#pos#:DT#NN]";
+										| String target = "[this_is, DT_VBZ, is_an, "
+										| 						+ "VBZ_DT, an_extractor, DT_NN]";
 										| assertEquals(features.toString(), target);
 
