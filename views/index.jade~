@@ -25,7 +25,7 @@ block content
 										th Description
 										th Example
 								tbody
-								for d in data
+								for d in data.responseJSON
 									tr
 										td
 											a(href='') #{d.name}
