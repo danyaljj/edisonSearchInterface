@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -16,7 +15,6 @@ var app = express();
 
 var data = require('./data.json');
 
-console.log(data);
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -31,8 +29,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 if (app.get('env') == 'development') {
 	app.locals.pretty = true;
 }
+app.get('/', function(req, res){
+	res.render('index', {
+    data: data,
+});
+});
 
-app.get('/', routes.index);
+//app.get('/', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

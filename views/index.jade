@@ -2,7 +2,10 @@ extends layout
 
 base_url="http://cogcomp.cs.illinois.edu/software/doc/apidocs/"
 
-var data = jQuery.getJSON("data.json").responseJSON;
+
+
+data = JSON.parse(data);
+
 
 block content
 	div.container
@@ -17,7 +20,7 @@ block content
 								button.btn.btn-info.btn-lg(type='button')
 									i.glyphicon.glyphicon-search
 					.row
-						.col-lg-12
+						.col-md-6
 							table#table.table
 								thead
 									tr
@@ -25,11 +28,12 @@ block content
 										th Description
 										th Example
 								tbody
+								.col-md-6
 								for d in data
 									tr
 										td
-											a(href='') #{d.name}
-										td(colspan="10") #{d.description}
+											a(href='#{d.javadoc_url}') #{d.name}	
+										td(colspan="10")= d.description
 										td
 											button(type="button" class="btn btn-success") Example
 				.row
@@ -38,4 +42,16 @@ block content
 							.div(class="panel-body-code")
 								pre(style="margin:20px")
 									code(class="language-clike")
-										| // define a context feature extractor for a context
+									| // define a context feature extractor for a context of size two
+									| FeatureExtractor fex = new POSAndWordBigramThreeBefore();
+									| TextAnnotation ta = TextAnnotationUtilities
+									|		 .createFromTokenizedString("This is an extractor .");
+									| // extract features for constituent at index 2
+									| Constituent c = ta.getView(ViewNames.TOKENS)
+									|		.getConstituentsCoveringToken(3);
+									| Set<Feature> features = fex.getFeatures(c);
+									| String target = "[this_is, DT_VBZ, is_an, "
+									| 						+ "VBZ_DT, an_extractor, DT_NN]";
+									| assertEquals(features.toString(), target);
+
+Status API Training Shop Blog About
