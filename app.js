@@ -15,7 +15,6 @@ var app = express();
 
 var data = require('./data.json');
 
-
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -26,16 +25,32 @@ app.use(methodOverride('_method'));
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 if (app.get('env') == 'development') {
 	app.locals.pretty = true;
 }
 app.get('/', function(req, res){
+  var dat = JSON.stringify(data)
 	res.render('index', {
     data: data,
+    data2: dat
 });
 });
 
-//app.get('/', routes.index);
+//Javascript function for Lightbox
+$(document).ready(function() {
+  $(".various").fancybox({
+    maxWidth  : 800,
+    maxHeight : 600,
+    fitToView : false,
+    width   : '70%',
+    height    : '70%',
+    autoSize  : false,
+    closeClick  : false,
+    openEffect  : 'none',
+    closeEffect : 'none'
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

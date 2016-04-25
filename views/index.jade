@@ -1,17 +1,15 @@
 extends layout
 
 base_url="http://cogcomp.cs.illinois.edu/software/doc/apidocs/"
-
-
-
-data = JSON.parse(data);
-
+script(src='/javascripts/replace_content.js')
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+  
 
 block content
 	div.container
 		.container
 			.row
-				.col-md-6
+				.col-md-4
 					h2 Edison Search Interface
 					#custom-search-input
 						.input-group.col-md-12
@@ -29,29 +27,48 @@ block content
 										th Example
 								tbody
 								.col-md-6
-								for d in data
+								- var data2=data
+								- var c=-1
+								- for d in data
+									- c= c+1
+									- var e= d.testcode
 									tr
 										td
 											a(href='#{d.javadoc_url}') #{d.name}	
 										td(colspan="10")= d.description
 										td
-											button(type="button" class="btn btn-success") Example
-				.row
-					.col-xs-6
-						.div(style="margin-top:40px")
-							.div(class="panel-body-code")
-								pre(style="margin:20px")
-									code(class="language-clike")
-									| // define a context feature extractor for a context of size two
-									| FeatureExtractor fex = new POSAndWordBigramThreeBefore();
-									| TextAnnotation ta = TextAnnotationUtilities
-									|		 .createFromTokenizedString("This is an extractor .");
-									| // extract features for constituent at index 2
-									| Constituent c = ta.getView(ViewNames.TOKENS)
-									|		.getConstituentsCoveringToken(3);
-									| Set<Feature> features = fex.getFeatures(c);
-									| String target = "[this_is, DT_VBZ, is_an, "
-									| 						+ "VBZ_DT, an_extractor, DT_NN]";
-									| assertEquals(features.toString(), target);
+											button(type="button" class="btn btn-success" onclick= 'hey(#{c})') Example
+											
+				.col-md-12
+					.row
+						h2 Sample Code
+							.div(style="margin-top:40px")
+								.div(class="panel-body-code")
+									pre(style="margin:20px")
+										code(class="language-clike")
+										p#alert= "Sample Code goes here"
+									
+								
+	script.
+		function hey(i)
+		{
+			var arr = !{JSON.stringify(data2)};
+			document.getElementById("alert").innerHTML = !{JSON.stringify(data2)}[i]["testcode"];
+	
+		}
+		$(document).ready(function() {
+		$(".various").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+});
+		
 
 Status API Training Shop Blog About
