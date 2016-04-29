@@ -37,21 +37,6 @@ app.get('/', function(req, res){
 });
 });
 
-//Javascript function for Lightbox
-$(document).ready(function() {
-  $(".various").fancybox({
-    maxWidth  : 800,
-    maxHeight : 600,
-    fitToView : false,
-    width   : '70%',
-    height    : '70%',
-    autoSize  : false,
-    closeClick  : false,
-    openEffect  : 'none',
-    closeEffect : 'none'
-  });
-});
-
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
