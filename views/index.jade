@@ -38,17 +38,35 @@ block content
 											a(href='#{d.javadoc_url}') #{d.name}	
 										td(colspan="10")= d.description
 										td
-											button(type="button" class="btn btn-success" onclick= 'hey(#{c})') Example
 											
-				.col-md-12
-					.row
-						h2 Sample Code
-							.div(style="margin-top:40px")
-								.div(class="panel-body-code")
-									pre(style="margin:20px")
-										code(class="language-clike")
-										p#alert= "Sample Code goes here"
-									
+											button.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Open Modal
+											// Modal
+											#myModal.modal.fade(role='dialog')
+												.modal-dialog
+												// Modal content
+												.modal-content
+												.modal-header
+												button.close(type='button', data-dismiss='modal') ×
+												h4.modal-title Modal Header
+												.modal-body
+												div(style="margin-top:40px")
+												.div(class="panel-body-code")
+													pre(style="margin:20px")
+														code(class="language-clike")
+														#{d.testcode}
+												.modal-footer
+												button.btn.btn-default(type='button', data-dismiss='modal') 
+											Close
+														
+								.col-md-12
+									.row
+										h2 Sample Code
+											.div(style="margin-top:40px")
+												.div(class="panel-body-code")
+													pre(style="margin:20px")
+														code(class="language-clike")
+														p#alert= "Sample Code goes here"
+																			
 								
 	script.
 		function hey(i)
