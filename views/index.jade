@@ -39,7 +39,7 @@ block content
 										td(colspan="10")= d.description
 										td
 											
-											button.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Open Modal
+											button.btn.btn-info.btn-md(type='button', data-toggle='modal', data-target='#myModal') Sample Code
 											// Modal
 											#myModal.modal.fade(role='dialog')
 												.modal-dialog
@@ -47,25 +47,14 @@ block content
 												.modal-content
 												.modal-header
 												button.close(type='button', data-dismiss='modal') ×
-												h4.modal-title Modal Header
+												h4.modal-title #{d.name} Testcode
 												.modal-body
-												div(style="margin-top:40px")
-												.div(class="panel-body-code")
-													pre(style="margin:20px")
-														code(class="language-clike")
-														#{d.testcode}
+													pre.
+													code(class="language-clike")
+													#{d.testcode}
 												.modal-footer
 												button.btn.btn-default(type='button', data-dismiss='modal') 
 											Close
-														
-								.col-md-12
-									.row
-										h2 Sample Code
-											.div(style="margin-top:40px")
-												.div(class="panel-body-code")
-													pre(style="margin:20px")
-														code(class="language-clike")
-														p#alert= "Sample Code goes here"
 																			
 								
 	script.
