@@ -1,0 +1,80 @@
+<h1>JSON Pretty Print</h1>
+
+<p>When developing php applications, it is often helpful to dump variables. <code class="language-clike">var_dump()</code> or <code class="language-clike">print_r()</code> can used, but are not very readable for large complex data structures. <a href="http://dbug.ospinto.com/">The <code class="language-clike">dBug()</code> class</a> is a great alternative which improves readability, but is bad at distinguishing numbers, strings, null values, and boolean values. JSON Pretty Print (<code class="language-clike">jpp()</code>) seeks to address these issues by displaying data as colour-coded and formatted JSON. Let's dive in...</p>
+
+<h2>Initialize you data</h2>
+<pre><code class="language-clike">&lt;?php
+    require 'class.JSON.php';
+    $json = new JSON($data);
+?&gt;</code></pre>
+
+<h2>The class can inject your css</h2>
+<pre><code class="language-clike">&lt;?php
+    echo $json->css();// default theme
+    //echo $json->css('emacs');// or use an alternate theme
+?&gt;</code></pre>
+
+<h2>Which will output something like this</h2>
+<pre><code class="language-css">&lt;style&gt;
+code.json pre {
+    color: hsl(26, 70%, 74%);
+    text-shadow: 0 0 4px rgba(0,255,50,0.5);
+    margin: 0 0 20px 0;
+    padding: 10px;
+    border: 1px #999 solid;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
+    font-family: monospace;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+code.json .number {
+    color: hsl(199, 92%, 75%);
+}
+
+code.json .true {
+    color: rgb(47, 179, 47);
+}
+
+code.json .false {
+    color: red;
+}
+
+code.json .null {
+    color: black;
+    text-transform: uppercase;
+    background-color: rgba(224, 109, 151, 0.75);
+    padding: 0 .6em;
+    border-radius: 3px;
+}
+
+code.json .string {
+    color: whitesmoke;
+}
+&lt;/style&gt;</code></pre>
+
+<h2>Or if you prefer, just do this</h2>
+<pre><code class="language-markup">&lt;link rel="stylesheet" href="theme.default.css" /&gt;</code></pre>
+
+<h2>Now, output your data</h2>
+<pre><code class="language-clike">&lt;?php
+    echo $json->prettyprint();
+?&gt;</code></pre>
+
+<h2>Which will give you something that looks like this</h2>
+<code class="json"><pre>{
+   "ua": <span class="string">"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit\/537.22 (KHTML, like Gecko) Chrome\/25.0.1364.152 Safari\/537.22"</span>,
+   "sky_blue": <span class="true">true</span>,
+   "server": {
+      "signature": <span class="string">"&lt;address&gt;Apache\/2.2.22 (Ubuntu) Server at test.snappysmurf.ca Port 80&lt;\/address&gt;\n"</span>,
+      "php_version": <span class="number">5.3</span>,
+      "is_windows": <span class="false">false</span>,
+      "gui": <span class="null">null</span>
+   },
+   "nihilism": <span class="null">null</span>
+}</pre></code>
+<h2>The short-hand for all the above is:</h2>
+<pre><code class="language-clike">&lt;?= jpp($x); ?&gt;</code></pre>

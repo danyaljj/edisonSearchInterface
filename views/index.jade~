@@ -37,25 +37,22 @@ block content
 										td
 											a(href='#{d.javadoc_url}') #{d.name}	
 										td(colspan="10")= d.description
-											code(class="language-clike", style={'white-space': 'pre'})
-												#{d.testcode}
+										td
 											
-											//button.btn.btn-info.btn-md(type='button', data-toggle='modal', data-target='#myModal') Sample Code
+											button.btn.btn-info.btn-md(type='button', data-toggle='modal', data-target='#myModal') Sample Code
 											// Modal
-											//#myModal.modal.fade(role='dialog')
-												//.modal-content
-													//.modal-header
-													//	button.close(type='button', data-dismiss='modal') ×
-													//	h3 #{d.name} Sample Code
-													//.modal-body
-													//	code(class="language-clike")
-															//pre.
-															//	#{d.testcode}
-													//.modal-footer
-													//	button.btn(data-dismiss='modal', aria-hidden='true') Close
+											#myModal.modal.fade(role='dialog')
+												.modal-content
+													.modal-header
+														button.close(type='button', data-dismiss='modal') ×
+														h3 #{d.name} Sample Code
+													.modal-body
+														code(class="language-clike")
+															p #{d.testcode}
+													.modal-footer
+														button.btn(data-dismiss='modal', aria-hidden='true') Close
 												
-								
-
+																			
 								
 	script.
 		function hey(i)
@@ -68,5 +65,9 @@ block content
 								"_blank", "width=600,height=600");
 			myWindow.focus();
 		}
+
+		
+		
+		
 
 Status API Training Shop Blog About
