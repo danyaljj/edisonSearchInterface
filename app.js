@@ -14,10 +14,6 @@ var express = require('express')
 var app = express();
 
 var data = require('./data.json');
-console.log(data)
-//for(i = 0; i < data.length; i++){
-//  data[i]["testcode"] = data[i]["testcode"].replace(/;/g,";\n <br>");
-//}
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
