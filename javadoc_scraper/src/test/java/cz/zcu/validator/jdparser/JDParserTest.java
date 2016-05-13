@@ -17,43 +17,15 @@ public class JDParserTest {
     @Test
     public void standardJavaDocDocumentsTest() {
 
-    	String base_url = "http://cogcomp.cs.illinois.edu/software/doc/apidocs/edu/illinois/cs/cogcomp/edison/features/";
-        JsoupJavaDocParser parser = new JsoupJavaDocParser(base_url);
+    	String base_url = "http://cogcomp.cs.illinois.edu/software/doc/apidocs/edu/illinois/cs/cogcomp/edison/features/"; //This URL will be expected to the base URL of the public repository. We will extract the testcode to be presented on the web interface from here.
+    	
+        String repository_path = "/lrec/"; //We will be using string to check for Classes whose path contains this substring. 
+    	JsoupJavaDocParser parser = new JsoupJavaDocParser(base_url, repository_path);
 
         try {
-
-//            // parses javadoc of vogar project http://code.google.com/p/vogar/
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/vogar/doc"));
-//
-//            // parses javadoc of pdfjbim project
-//            // http://code.google.com/p/pdfrecompressor/
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/pdfjbim/doc"));
-//
-//            // parses javadoc of gtkjfilechooser project
-//            // http://code.google.com/p/gtkjfilechooser/
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/gtkjfilechooser/doc"));
-//
-//            // parses javadoc of jflowmap project
-//            // http://code.google.com/p/jflowmap/
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/jflowmap/doc"));
-//
-//            // parses javadoc of openfire project
-//            // http://code.google.com/p/openfire/
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/openfire/src/doc"));
-//
-//            // parses javadoc of zmanim project
-//            // http://code.google.com/p/kosherjava/
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/zmanim/doc"));
-//            
-//            // parses some testing javadocs
-        	//parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/old/doc"));
-
-//            // parses javadoc of jdparser project
-            parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/jdparser/apidoc/software/doc/illinois-edison/apidocs"));
+        	// parses javadoc directory of the Edison project
+            parser.parseDataFromJavaDoc(new File("src/test/apidoc/software/doc/illinois-edison/apidocs"));
             
-//          // parses javadoc of jdparser project
-            //parser.parseDataFromJavaDoc(new File("src/test/javadoc-example/oop-cv3-manualjavadoc/doc"));
-
         } catch (JavaDocParsingException e) {
 
             fail(e.getMessage());

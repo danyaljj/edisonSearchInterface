@@ -107,23 +107,19 @@ public class JsoupJavaDocParser implements JavaDocParsing {
 	 */
 	private JavaDocsFactory javaDocFactory = null;
 
-	private String base_url;
+	private String base_url, repo_path_string;
 	
-	String[] fexes = {"LabelOneAfter", "LabelOneBefore", "LabelTwoAfter", "POSWindow"};
+	//Old approach to extracting classes that we require.
+	//String[] fexes = {"LabelOneAfter", "LabelOneBefore", "LabelTwoAfter", "POSWindow"};
 	
-
-	public JsoupJavaDocParser(String base_url) {
+	public JsoupJavaDocParser(String base_url, String repo_path_string) {
 
 		this.skeletonFactory = new SkeletonFactory();
 		this.javaDocFactory = new JavaDocsFactory();
 		this.base_url = base_url;
+		this.repo_path_string = repo_path_string;
 	}
 	
-	private List<String> buildFexList(){
-		
-		return Arrays.asList(this.fexes);  
-	}
-
 	@Override
 	public Collection<ClassRepresentation> parseDataFromJavaDoc(
 			File javaDocFolder) throws JavaDocParsingException {
@@ -147,11 +143,11 @@ public class JsoupJavaDocParser implements JavaDocParsing {
 		for (File javaDocClassFile : javaDocClassFiles) {
 			
 			boolean set = false;
-			for(String fex: this.fexes){
-				if(javaDocClassFile.getName().contains(fex)){
-					System.out.println("We have found the feature extractor.");
-					set = true;
-				}
+			
+			//Extracting on the classes in the LREC package
+			if(javaDocClassFile.getAbsolutePath().contains("/lrec/")){
+			System.out.println("We have found LREC feature extractor.");
+			set = true;
 			}
 			
 			if(!set){
@@ -184,16 +180,11 @@ public class JsoupJavaDocParser implements JavaDocParsing {
 				Map<SkeletonAttribute, JavaDocAttribute> classAttributes = extractAttributes(jsoupDocument);
 
 				Map<SkeletonMethod, JavaDocMethod> skeletonMethods = extractMethods(jsoupDocument);
-
-				List<String> fexlist = buildFexList();
 				
-				for(String className : fexlist){
-					if(skeletonClass.getName().equals(className)){
-						classes.add(new ClassRepresentation(classConstructors,
+				classes.add(new ClassRepresentation(classConstructors,
 								classAttributes, skeletonMethods, javaDocClass,
 								skeletonClass));
-					}
-				}
+
 			} catch (Exception e) {
 
 				throw new JavaDocParsingException(

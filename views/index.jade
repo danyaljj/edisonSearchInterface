@@ -32,6 +32,7 @@ block content
 								- for d in data
 									- c= c+1
 									- var e= d.testcode
+									- var n= d.name
 									tr
 										td
 											a(href='#{d.javadoc_url}') #{d.name}	
@@ -44,10 +45,10 @@ block content
 												.modal-content
 													.modal-header
 														button.close(type='button', data-dismiss='modal') ×
-														h3 #{d.name} Sample Code
+														h3 - #{n} Sample Code
 													.modal-body
 														code(class="language-clike", style={'white-space': 'pre'})
-															#{d.testcode}
+															#{e}
 													.modal-footer
 														button.btn(data-dismiss='modal', aria-hidden='true') Close
 													
