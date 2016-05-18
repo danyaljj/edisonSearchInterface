@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -14,6 +13,8 @@ var express = require('express')
 
 var app = express();
 
+var data = require('./data.json');
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -24,11 +25,15 @@ app.use(methodOverride('_method'));
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 if (app.get('env') == 'development') {
 	app.locals.pretty = true;
 }
-
-app.get('/', routes.index);
+app.get('/', function(req, res){
+	res.render('index', {
+    data: data
+});
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

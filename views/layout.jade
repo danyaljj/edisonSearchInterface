@@ -3,15 +3,18 @@ html
 	head
 		block head
 			block title
-				title Program Name
+				title Illinois-Edison Web Interface
 			block meta
 				meta(name='description', content='')
 				meta(name='keywords', content='')
 			link(rel='stylesheet', href='/css/bootstrap.min.css')
 			| <style>
 			| body { padding-top: 60px; }
+			| code.language-clike { white-space: pre; }
 			| </style>
-			script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+			script(type='text/javascript' src='http://code.jquery.com/jquery.min.js')
+			script(type='text/javascript' src='https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js')
+
 	body
 		include header
 
