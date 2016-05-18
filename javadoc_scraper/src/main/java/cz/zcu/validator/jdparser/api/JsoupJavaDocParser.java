@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.io.Writer;
+import java.io.FileWriter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -107,17 +109,18 @@ public class JsoupJavaDocParser implements JavaDocParsing {
 	 */
 	private JavaDocsFactory javaDocFactory = null;
 
-	private String base_url, repo_path_string;
+    private String base_url, repo_path_string, path_to_write;
 	
 	//Old approach to extracting classes that we require.
 	//String[] fexes = {"LabelOneAfter", "LabelOneBefore", "LabelTwoAfter", "POSWindow"};
 	
-	public JsoupJavaDocParser(String base_url, String repo_path_string) {
+    public JsoupJavaDocParser(String base_url, String repo_path_string, String path_to_write) {
 
 		this.skeletonFactory = new SkeletonFactory();
 		this.javaDocFactory = new JavaDocsFactory();
 		this.base_url = base_url;
 		this.repo_path_string = repo_path_string;
+		this.path_to_write = path_to_write;
 	}
 	
 	@Override
@@ -231,8 +234,12 @@ public class JsoupJavaDocParser implements JavaDocParsing {
         //InputStream in = edu.illinois.cs.cogcomp.edison.features.Feature.class.getResourceAsStream(package_structure);
         //System.out.println(in.toString());
         //BufferedReader rdr = new BufferedReader(new InputStreamReader(in));
-        
-		System.out.println(new Gson().toJson(listforjson));
+		try (Writer writer = new FileWriter(this.path_to_write)) {
+			new Gson().toJson(listforjson, writer);
+		    }
+		catch(Exception e){
+		    e.printStackTrace();
+		}
 
 		return classes;
 	}

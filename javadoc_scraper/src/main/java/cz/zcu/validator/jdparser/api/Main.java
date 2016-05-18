@@ -17,7 +17,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		JsoupJavaDocParser parser = new JsoupJavaDocParser("None", "/test/");
+	    JsoupJavaDocParser parser = new JsoupJavaDocParser("None", "/test/","../data.json");
 
 		try {
 

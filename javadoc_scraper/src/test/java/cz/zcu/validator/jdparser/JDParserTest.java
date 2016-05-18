@@ -20,7 +20,10 @@ public class JDParserTest {
     	String base_url = "http://cogcomp.cs.illinois.edu/software/doc/apidocs/edu/illinois/cs/cogcomp/edison/features/"; //This URL will be expected to the base URL of the public repository. We will extract the testcode to be presented on the web interface from here.
     	
         String repository_path = "/lrec/"; //We will be using string to check for Classes whose path contains this substring. 
-    	JsoupJavaDocParser parser = new JsoupJavaDocParser(base_url, repository_path);
+
+	String path_to_write_json = "../data.json";
+
+    	JsoupJavaDocParser parser = new JsoupJavaDocParser(base_url, repository_path, path_to_write_json);
 
         try {
         	// parses javadoc directory of the Edison project
