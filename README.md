@@ -4,7 +4,7 @@ The Edison Web interface is a Node-based web application that allows one to sear
 
 This application requires the following to generate its components and to run:
    - node
-   - npm (node package manager)
+   - npm (node package manager - version >= 3.8.3)
    - bash
    - java (version > 1.6)
    - mvn
@@ -13,7 +13,7 @@ This application requires the following to generate its components and to run:
 Steps to run the application:
 
 1) Extract the javadoc from the online javadoc repository. 
-   - Replace the base_javadoc_url variable with the appropriate base_url (The url that produces the API overview page)
+   - Replace the base_javadoc_url variable in the 'extract_javadoc.sh' script in the javadoc_scraper folder with the appropriate base_url (The url that produces the API overview page)
    - The current default is: "http://cogcomp.cs.illinois.edu/software/doc/illinois-edison/apidocs/"
    - Run './extract_javadoc.sh' from the 'javadoc_scraper' directory
 
@@ -32,4 +32,8 @@ Steps to run the application:
  - jade
  - bootstrap
  - [jquery-searchable](https://github.com/stidges/jquery-searchable)
- 
+
+##Troubleshooting
+ - 'Error: Cannot find module 'npmlog'. 
+    - This error usually occurs in outdated versions of npm (typically < 2.5.8) so be sure to run 'sudo npm install npm -g' to fix this issue.
+    - This error could also occur in some Mac installations and the best means to resolve the issue in that case is to a well-supported package installer such as 'homebrew' to handle your npm installation on Mac   
