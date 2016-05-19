@@ -4,7 +4,7 @@ The Edison Web interface is a Node-based web application that allows one to sear
 
 This application requires the following to generate its components and to run:
    - node
-   - npm (node package manager - version > 3.8.3)
+   - npm (node package manager - version >= 3.8.3)
    - bash
    - java (version > 1.6)
    - mvn
