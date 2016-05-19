@@ -35,5 +35,5 @@ Steps to run the application:
 
 ##Troubleshooting
  - 'Error: Cannot find module 'npmlog'. 
-    This error usually occurs in outdated versions of npm (typically < 2.5.8) so be sure to run 'sudo npm install npm -g' to fix this issue.
-    This error could also occur in some Mac installations and the best means to resolve the issue in that case is to a well-supported package installer such as 'homebrew' to handle your npm installation on Mac   
+    - This error usually occurs in outdated versions of npm (typically < 2.5.8) so be sure to run 'sudo npm install npm -g' to fix this issue.
+    - This error could also occur in some Mac installations and the best means to resolve the issue in that case is to a well-supported package installer such as 'homebrew' to handle your npm installation on Mac   
