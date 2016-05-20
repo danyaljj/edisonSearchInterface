@@ -26,7 +26,7 @@ Steps to run the application:
    - Run `./extract_javadoc.sh` from the `javadoc_scraper` directory
 
 2) Use the jdparser maven package to parser and generate the `data.json` file that will be ingested and presented by the web interface.
-   - Ensure that the base_url variable in the `src/test/java/cz/zcu/validator/jdparser/JDParserTest.java` file contains the base url with the root package path of the LREC feature classes.
+   - Ensure that the `base_url` variable in the `src/test/java/cz/zcu/validator/jdparser/JDParserTest.java` file contains the base url with the root package path of the feature classes.
    - The current default is: `http://cogcomp.cs.illinois.edu/software/doc/apidocs/edu/illinois/cs/cogcomp/edison/features/`
    - Run `mvn test` from the `javadoc_scraper` directory, and this will generate the `data.json` file in the base directory of our web application
 
