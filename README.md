@@ -1,7 +1,5 @@
 # Edison Search Interface
 
-## Intro 
-
 The Edison Web interface is a web application that allows one to search the description and keywords of feature extractors and preview their test code to see how they had been built. More details can be found in [this paper](http://cogcomp.cs.illinois.edu/page/publication_view/791). 
 
 ## Technologies being used within Web Application: 
