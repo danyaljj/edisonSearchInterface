@@ -109,18 +109,17 @@ public class JsoupJavaDocParser implements JavaDocParsing {
 	 */
 	private JavaDocsFactory javaDocFactory = null;
 
-    private String base_url, repo_path_string, base_github_url_raw, path_to_write;
+    private String base_url, repo_path_string, path_to_write;
 	
 	//Old approach to extracting classes that we require.
 	//String[] fexes = {"LabelOneAfter", "LabelOneBefore", "LabelTwoAfter", "POSWindow"};
 	
-    public JsoupJavaDocParser(String base_url, String repo_path_string, String base_github_url_raw, String path_to_write) {
+    public JsoupJavaDocParser(String base_url, String repo_path_string, String path_to_write) {
 
 		this.skeletonFactory = new SkeletonFactory();
 		this.javaDocFactory = new JavaDocsFactory();
 		this.base_url = base_url;
 		this.repo_path_string = repo_path_string;
-		this.base_github_url_raw = base_github_url_raw;
 		this.path_to_write = path_to_write;
 	}
 	
@@ -203,13 +202,13 @@ public class JsoupJavaDocParser implements JavaDocParsing {
 			
 			ClassRepresentation a = (ClassRepresentation) reps[i];
 			String java_code = "";
-			//String base_raw_url = "https://raw.githubusercontent.com/pauljv92/testedison/master/edison/src/test/java/edu/illinois/cs/cogcomp/edison/features/lrec/";
+			String base_raw_url = "https://raw.githubusercontent.com/pauljv92/testedison/master/edison/src/test/java/edu/illinois/cs/cogcomp/edison/features/lrec/";
 			
 			JavaDocClass jdoc = a.getJavaDocClass();
 			
 			try {
 					
-				   URL url = new URL(this.base_github_url_raw+"Test"+jdoc.getName()+".java");
+				   URL url = new URL(base_raw_url+"Test"+jdoc.getName()+".java");
 				   Scanner s = new Scanner(url.openStream());
 				   while(s.hasNext()) {
 					    // operate
