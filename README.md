@@ -20,6 +20,9 @@ Steps to run the application:
 2) Use the jdparser maven package to parser and generate the 'data.json' file that will be ingested and presented by the web interface.
    - Ensure that the base_url variable in the 'src/test/java/cz/zcu/validator/jdparser/JDParserTest.java' file contains the base url with the root package path of the LREC feature classes.
    - The current default is: "http://cogcomp.cs.illinois.edu/software/doc/apidocs/edu/illinois/cs/cogcomp/edison/features/"
+   - Ensure that the github_url_base_raw variable in the 'src/test/java/cz/zcu/validator/jdparser/JDParserTest.java' file contains the base raw github url from which we would append a "Test[FeatureExtractorName]" to download the Test file to be presented.
+   - The current default is: "https://raw.githubusercontent.com/IllinoisCogComp/illinois-cogcomp-nlp/maste\
+r/edison/src/test/java/edu/illinois/cs/cogcomp/edison/features/lrec/" 
    - Run 'mvn test' from the 'javadoc_scraper' directory, and this will generate the 'data.json' file in the base directory of our web application
 
 3) Start the Web Application 
